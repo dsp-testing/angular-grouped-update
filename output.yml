@@ -1,0 +1,1006 @@
+input:
+    job:
+        package-manager: npm_and_yarn
+        allowed-updates:
+            - dependency-type: direct
+              update-type: all
+        dependency-groups:
+            - name: angular
+              rules:
+                patterns:
+                    - '@angular*'
+        experiments:
+            grouped-updates-prototype: true
+            npm-transitive-dependency-removal: true
+        ignore-conditions:
+            - dependency-name: '@angular/animations'
+              source: output.yml
+              version-requirement: '>16.1.4'
+            - dependency-name: '@angular/forms'
+              source: output.yml
+              version-requirement: '>16.1.4'
+        source:
+            provider: github
+            repo: dsp-testing/angular-grouped-update
+            directory: /.
+            commit: 765fa3913054466c4c20faa58e8c6825def7be2c
+            hostname: github.com
+            api-endpoint: https://api.github.com/
+        credentials-metadata:
+            - host: github.com
+              type: git_source
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: '@angular/animations'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.0.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 16.0.4
+                - name: '@angular/core'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.0.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 16.0.4
+                - name: '@angular/forms'
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.0.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 16.0.4
+                - name: '@angular/common'
+                  requirements: []
+                  version: 16.0.4
+                - name: '@angular/platform-browser'
+                  requirements: []
+                  version: 16.0.4
+                - name: rxjs
+                  requirements: []
+                  version: 7.8.1
+                - name: tslib
+                  requirements: []
+                  version: 2.6.0
+                - name: zone.js
+                  requirements: []
+                  version: 0.13.1
+            dependency_files:
+                - /package.json
+                - /package-lock.json
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 765fa3913054466c4c20faa58e8c6825def7be2c
+            dependencies:
+                - name: '@angular/animations'
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.0.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 16.0.4
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.1.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 16.1.4
+                - name: '@angular/forms'
+                  previous-requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.0.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  previous-version: 16.0.4
+                  requirements:
+                    - file: package.json
+                      groups:
+                        - dependencies
+                      requirement: ^16.1.4
+                      source:
+                        type: registry
+                        url: https://registry.npmjs.org
+                  version: 16.1.4
+            updated-dependency-files:
+                - content: |
+                    {
+                      "name": "angular-grouped-update",
+                      "version": "1.0.0",
+                      "description": "",
+                      "main": "index.js",
+                      "scripts": {
+                        "test": "echo \"Error: no test specified\" && exit 1"
+                      },
+                      "author": "",
+                      "license": "ISC",
+                      "dependencies": {
+                        "@angular/animations": "^16.1.4",
+                        "@angular/core": "^16.0.4",
+                        "@angular/forms": "^16.1.4"
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: package.json
+                  operation: update
+                  support_file: false
+                  type: file
+                - content: |
+                    {
+                      "name": "angular-grouped-update",
+                      "version": "1.0.0",
+                      "lockfileVersion": 3,
+                      "requires": true,
+                      "packages": {
+                        "": {
+                          "name": "angular-grouped-update",
+                          "version": "1.0.0",
+                          "license": "ISC",
+                          "dependencies": {
+                            "@angular/animations": "^16.1.4",
+                            "@angular/core": "^16.0.4",
+                            "@angular/forms": "^16.1.4"
+                          }
+                        },
+                        "node_modules/@angular/animations": {
+                          "version": "16.1.4",
+                          "resolved": "https://registry.npmjs.org/@angular/animations/-/animations-16.1.4.tgz",
+                          "integrity": "sha512-QdqmnMEYsrZK1BB+/TGteyoQVRwIpRdBP4Jg+hX/BDhVpt35dptSwvNZj7+9zoYLwNo5DuGlttljEaLOs1UcUw==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/core": "16.1.4"
+                          }
+                        },
+                        "node_modules/@angular/common": {
+                          "version": "16.1.4",
+                          "resolved": "https://registry.npmjs.org/@angular/common/-/common-16.1.4.tgz",
+                          "integrity": "sha512-SDA8GZVY0nXCJaNUy13L22jAKuk1LZgQ6QzqOpqQc50C25bfBQbYv68PKjHCjQ62VxGKnDSTT85xCMNx+y/U4g==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/core": "16.1.4",
+                            "rxjs": "^6.5.3 || ^7.4.0"
+                          }
+                        },
+                        "node_modules/@angular/core": {
+                          "version": "16.1.4",
+                          "resolved": "https://registry.npmjs.org/@angular/core/-/core-16.1.4.tgz",
+                          "integrity": "sha512-eWs++peAp+Lm2SHGfMsHAye2IOmlDKkVJ4dFf4TaZXW+AEev3FXKXLFp+dBUq8YkCKly7iAV26NXEUBOFFtplQ==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "rxjs": "^6.5.3 || ^7.4.0",
+                            "zone.js": "~0.13.0"
+                          }
+                        },
+                        "node_modules/@angular/forms": {
+                          "version": "16.1.4",
+                          "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-16.1.4.tgz",
+                          "integrity": "sha512-JLhO7gM0WyTfr6tEWZMiCGikWLgaC/a2+tuxWsSlXUjlrbE4DyLzSAA6JqyDCFTvm9B/QzRPDfgExLTTZJY4eQ==",
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/common": "16.1.4",
+                            "@angular/core": "16.1.4",
+                            "@angular/platform-browser": "16.1.4",
+                            "rxjs": "^6.5.3 || ^7.4.0"
+                          }
+                        },
+                        "node_modules/@angular/platform-browser": {
+                          "version": "16.1.4",
+                          "resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-16.1.4.tgz",
+                          "integrity": "sha512-eQ1dBh/6ZwJVeiNGrcW6ePFmWeS+Oheu1RpuZSsvM/fI6qfsZE+or9IJ61SFvsMs65SbrO90Akc+ZXmpEidPdA==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          },
+                          "engines": {
+                            "node": "^16.14.0 || >=18.10.0"
+                          },
+                          "peerDependencies": {
+                            "@angular/animations": "16.1.4",
+                            "@angular/common": "16.1.4",
+                            "@angular/core": "16.1.4"
+                          },
+                          "peerDependenciesMeta": {
+                            "@angular/animations": {
+                              "optional": true
+                            }
+                          }
+                        },
+                        "node_modules/rxjs": {
+                          "version": "7.8.1",
+                          "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz",
+                          "integrity": "sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.1.0"
+                          }
+                        },
+                        "node_modules/tslib": {
+                          "version": "2.6.0",
+                          "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz",
+                          "integrity": "sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA=="
+                        },
+                        "node_modules/zone.js": {
+                          "version": "0.13.1",
+                          "resolved": "https://registry.npmjs.org/zone.js/-/zone.js-0.13.1.tgz",
+                          "integrity": "sha512-+bIeDAFEBYuXRuU3qGQvzdPap+N1zjM4KkBAiiQuVVCrHrhjDuY6VkUhNa5+U27+9w0q3fbKiMCbpJ0XzMmSWA==",
+                          "peer": true,
+                          "dependencies": {
+                            "tslib": "^2.3.0"
+                          }
+                        }
+                      }
+                    }
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: package-lock.json
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump the angular group with 2 updates
+            pr-body: |
+                Bumps the angular group with 2 updates: [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) and [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms).
+
+                Updates `@angular/animations` from 16.0.4 to 16.1.4
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/animations</code>'s releases</a>.</em></p>
+                <blockquote>
+                <h2>v16.1.4</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.4 (2023-07-06)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/4ba5850ba6b1748cf02b94649ab1ec359b4540ad"><img src="https://img.shields.io/badge/4ba5850ba6-fix-green" alt="fix - 4ba5850ba6" /></a></td>
+                <td>use <code>setTimeout</code> when coalescing tasks in Node.js (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50820">#50820</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>upgrade</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a4348355ce630273f762099fe6887a90ef799119"><img src="https://img.shields.io/badge/a4348355ce-fix-green" alt="fix - a4348355ce" /></a></td>
+                <td>allow for downgraded components to work with component-router (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50871">#50871</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.3</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.3 (2023-06-28)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd6fc5785fcf10b88db8b87d726af604668bc143"><img src="https://img.shields.io/badge/dd6fc5785f-fix-green" alt="fix - dd6fc5785f" /></a></td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/e1bbe47c234a495766cc07a9741a194954a6b9b4"><img src="https://img.shields.io/badge/e1bbe47c23-fix-green" alt="fix - e1bbe47c23" /></a></td>
+                <td>support input transform functions (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/79dd6a847a742ccf69597b122026758ad2b0b629"><img src="https://img.shields.io/badge/79dd6a847a-fix-green" alt="fix - 79dd6a847a" /></a></td>
+                <td>wait until animation completion before destroying renderer (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a797f41d1bcf11945673ef6d0474f33ad4614602"><img src="https://img.shields.io/badge/a797f41d1b-fix-green" alt="fix - a797f41d1b" /></a></td>
+                <td>wait until animation completion before destroying renderer (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.2</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.2 (2023-06-21)</h1>
+                <h3>http</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/9488a3fd4640b902243f441cf54776160da1a0fe"><img src="https://img.shields.io/badge/9488a3fd46-fix-green" alt="fix - 9488a3fd46" /></a></td>
+                <td>Send query params on fetch request (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50740">#50740</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5ae001829c3f3594e3c10f30e0b89ea1eb2b84fb"><img src="https://img.shields.io/badge/5ae001829c-fix-green" alt="fix - 5ae001829c" /></a></td>
+                <td>use serializeBody to support JSON payload in FetchBackend (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50776">#50776</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.1</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.1 (2023-06-14)</h1>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71360b3a3e7cb3419176c89f8c78ebd2e14ff880"><img src="https://img.shields.io/badge/71360b3a3e-fix-green" alt="fix - 71360b3a3e" /></a></td>
+                <td>libraries compiled with v16.1+ breaking with Angular framework v16.0.x (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50715">#50715</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/d9bed48eb590bc4a45769835bccc206d418f620c"><img src="https://img.shields.io/badge/d9bed48eb5-fix-green" alt="fix - d9bed48eb5" /></a></td>
+                <td>extend toSignal to accept any Subscribable (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50162">#50162</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>migrations</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/animations</code>'s changelog</a>.</em></p>
+                <blockquote>
+                <h1>16.1.4 (2023-07-06)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/4ba5850ba6b1748cf02b94649ab1ec359b4540ad">4ba5850ba6</a></td>
+                <td>fix</td>
+                <td>use <code>setTimeout</code> when coalescing tasks in Node.js (<a href="https://redirect.github.com/angular/angular/pull/50820">#50820</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>upgrade</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a4348355ce630273f762099fe6887a90ef799119">a4348355ce</a></td>
+                <td>fix</td>
+                <td>allow for downgraded components to work with component-router (<a href="https://redirect.github.com/angular/angular/pull/50871">#50871</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.2.0-next.1 (2023-06-28)</h1>
+                <h3>benchpress</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd850b2ab781f24065550f8a948ced498e0f1e99">dd850b2ab7</a></td>
+                <td>fix</td>
+                <td>correctly report GC memory amounts (<a href="https://redirect.github.com/angular/angular/pull/50760">#50760</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/29340a06789652e359e61b32f1814dcd20d9bd26">29340a0678</a></td>
+                <td>fix</td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/d64864e95e193e46180aeaf0d634152327650871">d64864e95e</a></td>
+                <td>fix</td>
+                <td>support input transform functions (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2b55103e94578ab1cb765147077e82e1228b0dbb">2b55103e94</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0380564f8562f5971cff671319439ad0f2b40a7e">0380564f85</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.3 (2023-06-28)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd6fc5785fcf10b88db8b87d726af604668bc143">dd6fc5785f</a></td>
+                <td>fix</td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/e1bbe47c234a495766cc07a9741a194954a6b9b4">e1bbe47c23</a></td>
+                <td>fix</td>
+                <td>support input transform functions (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/79dd6a847a742ccf69597b122026758ad2b0b629">79dd6a847a</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a797f41d1bcf11945673ef6d0474f33ad4614602">a797f41d1b</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/angular/angular/commit/33fea8e2feaf9fade9a2cbebe94d2c84901829fe"><code>33fea8e</code></a> refactor(animations): Fix JSDoc comment (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50893">#50893</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/52f1dd9aaadb12806792570920c2884ea82361a1"><code>52f1dd9</code></a> refactor(animations): remove redundant castings (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50860">#50860</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/a797f41d1bcf11945673ef6d0474f33ad4614602"><code>a797f41</code></a> fix(platform-browser): wait until animation completion before destroying rend...</li>
+                <li><a href="https://github.com/angular/angular/commit/9b7bc801f648bfc6932a9125eb6ffe9c419ae05e"><code>9b7bc80</code></a> Revert &quot;fix(platform-browser): wait until animation completion before destroy...</li>
+                <li><a href="https://github.com/angular/angular/commit/5a83c0c1562c69b4bd9429d7288b66fb01f28497"><code>5a83c0c</code></a> Revert &quot;refactor(animations): remove redundant castings (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50677">#50677</a>)&quot; (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50857">#50857</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/21ced23c7cbba362a3bc5abae02ee0450ff69d96"><code>21ced23</code></a> refactor(animations): remove redundant castings (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50677">#50677</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/79dd6a847a742ccf69597b122026758ad2b0b629"><code>79dd6a8</code></a> fix(platform-browser): wait until animation completion before destroying rend...</li>
+                <li><a href="https://github.com/angular/angular/commit/463e04ca22ba778a1e81297dc6eed5d9c44d13f0"><code>463e04c</code></a> refactor: use <code>queueMicrotask</code> to schedule micro tasks instead of various hel...</li>
+                <li><a href="https://github.com/angular/angular/commit/b6e31be059393fa2ee1aac7af7e4605759d38b87"><code>b6e31be</code></a> docs(animations): Make links out of <a href="https://github.com/see"><code>@​see</code></a> tags (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50110">#50110</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/0c441f6d64972b7601cb2815615b0e1f5a1b8cdf"><code>0c441f6</code></a> refactor(platform-browser): Remove BrowserDetection (<a href="https://github.com/angular/angular/tree/HEAD/packages/animations/issues/50411">#50411</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/angular/angular/commits/16.1.4/packages/animations">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+
+                Updates `@angular/forms` from 16.0.4 to 16.1.4
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/angular/angular/releases"><code>@​angular/forms</code>'s releases</a>.</em></p>
+                <blockquote>
+                <h2>v16.1.4</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.4 (2023-07-06)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/4ba5850ba6b1748cf02b94649ab1ec359b4540ad"><img src="https://img.shields.io/badge/4ba5850ba6-fix-green" alt="fix - 4ba5850ba6" /></a></td>
+                <td>use <code>setTimeout</code> when coalescing tasks in Node.js (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50820">#50820</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>upgrade</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a4348355ce630273f762099fe6887a90ef799119"><img src="https://img.shields.io/badge/a4348355ce-fix-green" alt="fix - a4348355ce" /></a></td>
+                <td>allow for downgraded components to work with component-router (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50871">#50871</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.3</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.3 (2023-06-28)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd6fc5785fcf10b88db8b87d726af604668bc143"><img src="https://img.shields.io/badge/dd6fc5785f-fix-green" alt="fix - dd6fc5785f" /></a></td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/e1bbe47c234a495766cc07a9741a194954a6b9b4"><img src="https://img.shields.io/badge/e1bbe47c23-fix-green" alt="fix - e1bbe47c23" /></a></td>
+                <td>support input transform functions (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/79dd6a847a742ccf69597b122026758ad2b0b629"><img src="https://img.shields.io/badge/79dd6a847a-fix-green" alt="fix - 79dd6a847a" /></a></td>
+                <td>wait until animation completion before destroying renderer (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a797f41d1bcf11945673ef6d0474f33ad4614602"><img src="https://img.shields.io/badge/a797f41d1b-fix-green" alt="fix - a797f41d1b" /></a></td>
+                <td>wait until animation completion before destroying renderer (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.2</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.2 (2023-06-21)</h1>
+                <h3>http</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/9488a3fd4640b902243f441cf54776160da1a0fe"><img src="https://img.shields.io/badge/9488a3fd46-fix-green" alt="fix - 9488a3fd46" /></a></td>
+                <td>Send query params on fetch request (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50740">#50740</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/5ae001829c3f3594e3c10f30e0b89ea1eb2b84fb"><img src="https://img.shields.io/badge/5ae001829c-fix-green" alt="fix - 5ae001829c" /></a></td>
+                <td>use serializeBody to support JSON payload in FetchBackend (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50776">#50776</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h2>v16.1.1</h2>
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.1 (2023-06-14)</h1>
+                <h3>compiler-cli</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/71360b3a3e7cb3419176c89f8c78ebd2e14ff880"><img src="https://img.shields.io/badge/71360b3a3e-fix-green" alt="fix - 71360b3a3e" /></a></td>
+                <td>libraries compiled with v16.1+ breaking with Angular framework v16.0.x (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50715">#50715</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/d9bed48eb590bc4a45769835bccc206d418f620c"><img src="https://img.shields.io/badge/d9bed48eb5-fix-green" alt="fix - d9bed48eb5" /></a></td>
+                <td>extend toSignal to accept any Subscribable (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50162">#50162</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>migrations</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/angular/angular/blob/main/CHANGELOG.md"><code>@​angular/forms</code>'s changelog</a>.</em></p>
+                <blockquote>
+                <h1>16.1.4 (2023-07-06)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/4ba5850ba6b1748cf02b94649ab1ec359b4540ad">4ba5850ba6</a></td>
+                <td>fix</td>
+                <td>use <code>setTimeout</code> when coalescing tasks in Node.js (<a href="https://redirect.github.com/angular/angular/pull/50820">#50820</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>upgrade</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a4348355ce630273f762099fe6887a90ef799119">a4348355ce</a></td>
+                <td>fix</td>
+                <td>allow for downgraded components to work with component-router (<a href="https://redirect.github.com/angular/angular/pull/50871">#50871</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.2.0-next.1 (2023-06-28)</h1>
+                <h3>benchpress</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd850b2ab781f24065550f8a948ced498e0f1e99">dd850b2ab7</a></td>
+                <td>fix</td>
+                <td>correctly report GC memory amounts (<a href="https://redirect.github.com/angular/angular/pull/50760">#50760</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/29340a06789652e359e61b32f1814dcd20d9bd26">29340a0678</a></td>
+                <td>fix</td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/d64864e95e193e46180aeaf0d634152327650871">d64864e95e</a></td>
+                <td>fix</td>
+                <td>support input transform functions (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/2b55103e94578ab1cb765147077e82e1228b0dbb">2b55103e94</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/0380564f8562f5971cff671319439ad0f2b40a7e">0380564f85</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+                <h1>16.1.3 (2023-06-28)</h1>
+                <h3>core</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/dd6fc5785fcf10b88db8b87d726af604668bc143">dd6fc5785f</a></td>
+                <td>fix</td>
+                <td>expose input transform function on ComponentFactory and ComponentMirror (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>elements</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/e1bbe47c234a495766cc07a9741a194954a6b9b4">e1bbe47c23</a></td>
+                <td>fix</td>
+                <td>support input transform functions (<a href="https://redirect.github.com/angular/angular/pull/50713">#50713</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <h3>platform-browser</h3>
+                <table>
+                <thead>
+                <tr>
+                <th>Commit</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/79dd6a847a742ccf69597b122026758ad2b0b629">79dd6a847a</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50677">#50677</a>)</td>
+                </tr>
+                <tr>
+                <td><a href="https://github.com/angular/angular/commit/a797f41d1bcf11945673ef6d0474f33ad4614602">a797f41d1b</a></td>
+                <td>fix</td>
+                <td>wait until animation completion before destroying renderer (<a href="https://redirect.github.com/angular/angular/pull/50860">#50860</a>)</td>
+                </tr>
+                </tbody>
+                </table>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/angular/angular/commit/d555a33761698dd1caec0eb109cb06470bb9cc8c"><code>d555a33</code></a> docs(forms): FormBuilder is not associated with ReactiveFormsModule (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50941">#50941</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/463e04ca22ba778a1e81297dc6eed5d9c44d13f0"><code>463e04c</code></a> refactor: use <code>queueMicrotask</code> to schedule micro tasks instead of various hel...</li>
+                <li><a href="https://github.com/angular/angular/commit/633aeb0c5fe1142754929bcf3ac464e404877a99"><code>633aeb0</code></a> docs(forms): Make links out of <a href="https://github.com/see"><code>@​see</code></a> tags (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50110">#50110</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/68017d4e75abed78b378dce54f860cfa0d0fa42f"><code>68017d4</code></a> feat(core): add ability to transform input values (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50420">#50420</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/1598fbc24a1d57d46de05cc982ce389888a724bf"><code>1598fbc</code></a> docs: added wiki link for domain model (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50180">#50180</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/efa92ab6caf61444456b38a122f8c87458be4923"><code>efa92ab</code></a> refactor(forms): remove unnecessary Array.from (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/50314">#50314</a>)</li>
+                <li><a href="https://github.com/angular/angular/commit/7baaed262d179e96fe42621c6b1cc6c7288ebf58"><code>7baaed2</code></a> docs(forms): warn the user about getting old values and show how to avoid (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/5">#5</a>...</li>
+                <li><a href="https://github.com/angular/angular/commit/4b355cca67fb01c182216b058139cd1b7085d7d6"><code>4b355cc</code></a> docs(forms): warn the user about getting old values and show how to avoid (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/5">#5</a>...</li>
+                <li><a href="https://github.com/angular/angular/commit/4b41257f1c950db26ff13460048d7061005daf25"><code>4b41257</code></a> docs(forms): warn the user about getting old values and show how to avoid (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/5">#5</a>...</li>
+                <li><a href="https://github.com/angular/angular/commit/b98ecbc0cee900ba7cfe5f272f43c750dd5cd2b1"><code>b98ecbc</code></a> build: update minimum supported Node version from 16.13.0 -&gt; 16.14.0 (<a href="https://github.com/angular/angular/tree/HEAD/packages/forms/issues/49771">#49771</a>)</li>
+                <li>See full diff in <a href="https://github.com/angular/angular/commits/16.1.4/packages/forms">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump the angular group with 2 updates
+
+                Bumps the angular group with 2 updates: [@angular/animations](https://github.com/angular/angular/tree/HEAD/packages/animations) and [@angular/forms](https://github.com/angular/angular/tree/HEAD/packages/forms).
+
+
+                Updates `@angular/animations` from 16.0.4 to 16.1.4
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.1.4/packages/animations)
+
+                Updates `@angular/forms` from 16.0.4 to 16.1.4
+                - [Release notes](https://github.com/angular/angular/releases)
+                - [Changelog](https://github.com/angular/angular/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/angular/angular/commits/16.1.4/packages/forms)
+            dependency-group:
+                name: angular
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 765fa3913054466c4c20faa58e8c6825def7be2c

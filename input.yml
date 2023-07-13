@@ -1,0 +1,20 @@
+job:
+  allowed-updates:
+    - dependency-type: direct
+      update-type: all
+  dependency-groups:
+    - name: angular
+      rules:
+        patterns:
+          - "@angular*"
+  experiments:
+    grouped-updates-prototype: true
+    npm-transitive-dependency-removal: true
+  package-manager: npm_and_yarn
+  source:
+    provider: github
+    repo: dsp-testing/angular-grouped-update
+    directory: "/."
+    branch:
+    api-endpoint: https://api.github.com/
+    hostname: github.com
